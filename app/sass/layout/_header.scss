@@ -1,0 +1,31 @@
+/* Head */
+
+.header {
+  width: 100%;
+  h1 {
+    @include styling_wrapper_content($white, null, 50px, $font-family--primary, null, 300);
+    margin-top: 0;
+    padding-top: 3%;
+    margin-bottom: 50px;
+    margin-left: 60px;
+  }
+}
+
+
+
+#header_about, #about {
+  background-color: $color-two;
+}
+
+#header_portfolio, #portfolio {
+  background-color: $color-three;
+}
+
+#header_services, #services {
+  background-color: $color-one;
+}
+
+#header_contact, #contact {
+  background-color: $color-four;
+}
+

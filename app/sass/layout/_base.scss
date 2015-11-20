@@ -1,0 +1,40 @@
+/**
+  * BASE Partial SASS
+  * This SASS file has general components
+  * used on the app
+**/
+
+/* General */
+html {
+  @extend %full-page;
+}
+
+body {
+  @extend %full-page;
+  overflow: hidden;
+}
+
+neon-animated-pages {
+  @extend %full-page;
+}
+
+a {
+  &:hover, &:link, &:visited, &:active {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.layout {
+  @extend %full-page;
+  overflow: auto;
+  background: $color-one;
+}
+
+.mini-circle-container {
+  @include position(absolute, $values: top 0 left 2%);
+  text-align: center;
+  padding: 8px;
+}
+
+

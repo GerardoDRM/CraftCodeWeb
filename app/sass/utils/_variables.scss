@@ -1,0 +1,43 @@
+/**
+  * Variables Partial SASS
+  * This SASS file has the palette color
+  * the media queries break points and fonts attributes.
+**/
+
+// Basic colors
+$white: #FFF;
+$black: #000;
+$gray: #878787;
+$gray-material : #e9eaed;
+$color-one: #4C6A8D;
+$color-two: #047E8C;
+$color-three: #F05A41;
+$color-four: #f0565f;
+
+// Light Colors
+
+// Functional colors
+
+// Asset paths
+$path-img-css: "../../img";
+
+// Media query break points
+$screen-xs-max: "(max-width: 768px)";
+$screen-sm-min: "(min-width: 768px) and (max-width: 992px)";
+$screen-md-min: "(min-width: 992px)";
+$screen-lg-min: "(min-width: 1200px)";
+
+// Font stack
+$font-url--google: 'https://fonts.googleapis.com/css?family=Roboto:400,300italic';
+$font-family--primary: 'Roboto', sans-serif;
+
+// Font Weights
+$font-weight--thin: 100;
+$font-weight--light: 300;
+$font-weight--medium: 400;
+$font-weight--bold: 700;
+
+// Text Size
+$base__font-size: 16px;
+
+

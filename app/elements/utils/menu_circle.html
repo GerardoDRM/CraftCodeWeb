@@ -1,0 +1,110 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+
+<dom-module id="circles-page">
+
+    <style>
+        :host {
+            display: block;
+            text-align: center;
+            top: 25%;
+
+        }
+
+        @media (min-width: 992px) {
+            :host {
+                @apply(--layout-horizontal);
+                @apply(--layout-center-center);
+                top: 0;
+            }
+        }
+    </style>
+
+    <template>
+        <content></content>
+    </template>
+
+</dom-module>
+
+<script>
+    var circles = null;
+    var multipliers = [1, 1, 1, 1];
+    var animation;
+    function move(circle) {
+        for (var i = 0; i < circle.length; i++) {
+            animate(circle, i);
+        }
+        animation = setTimeout(function () {
+            move(circle);
+        }, 30);
+    }
+
+    function animate(circle, i) {
+        if (parseInt(circle[i].style.top) <= -40) {
+            multipliers[i] = Math.abs(1) * 0.6;
+            circle[i].style.opacity = 0.3;
+        }
+        else if (parseInt(circle[i].style.top) >= 40) {
+            multipliers[i] = -1 * 0.5;
+            circle[i].style.opacity = 0.8;
+
+        }
+        circle[i].style.top = (parseInt(circle[i].style.top) + (multipliers[i] * 3) ) + 'px';
+    }
+
+
+    Polymer({
+        is: 'circles-page',
+        ready: function () {
+            this.opened = true;
+            circles = Polymer.dom(this).querySelectorAll('.circle');
+            for (var i = 0; i < circles.length; i++) {
+                circles[i].style.top = ((-1 * 40) + ((i + 1) * 10) ) + "px";
+            }
+            move(circles);
+        },
+        opened: {
+            type: Boolean
+        },
+        behaviors: [
+            Polymer.NeonAnimationRunnerBehavior
+        ],
+        properties: {
+            animationConfig: {
+                value: function () {
+                    var circles = Polymer.dom(this).querySelectorAll('.circle');
+                    var circlesArray = Array.prototype.slice.call(circles);
+                    return {
+                        'entry': [{
+                            name: 'cascaded-animation',
+                            animation: 'scale-up-animation',
+                            nodes: circlesArray
+                        }
+                        ],
+                        'exit': [{
+                            name: 'cascaded-animation',
+                            animation: 'scale-down-animation',
+                            nodes: circlesArray
+                        }]
+                    };
+                }
+            }
+        },
+        listeners: {
+            'neon-animation-finish': '_onAnimationFinish'
+        },
+
+        _onAnimationFinish: function () {
+            if (!this.opened) {
+                this.style.display = 'none';
+            }
+        },
+
+        hide: function () {
+            this.opened = false;
+            this.playAnimation('exit');
+            clearTimeout(animation);
+        }
+    });
+</script>

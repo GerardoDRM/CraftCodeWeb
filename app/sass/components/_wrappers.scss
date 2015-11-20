@@ -1,0 +1,137 @@
+.container-craft {
+  width: 65%;
+  @extend %center-container;
+  h2 {
+    @include styling_wrapper_content($white, null, 30px, $font-family--primary, null, 300);
+    &.quote {
+      text-align: center;
+      font-weight: 300;
+      font-style: italic;
+      font-size: em(25px);
+      margin: 10% 0;
+      quotes: "\201C""\201D""\2018""\2019";
+      text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15), 6px 18px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1);
+
+      &:before {
+        content: open-quote;
+        font-size: em(20px);
+        line-height: 0.1em;
+        margin-right: 0.2em;
+        vertical-align: -0.4em;
+        font-family: serif;
+      }
+    }
+  }
+  p {
+    color: $white;
+  }
+}
+
+.container-craft-fluid {
+  width: 90%;
+  height: 100%;
+  @extend %center-container;
+}
+
+.grid {
+  width: 90%;
+  height: 100%;
+  clear: both;
+
+  &.mv-about {
+    margin: 5% 0;
+    overflow: auto;
+    p {
+      padding-left: 10%;
+    }
+  }
+  @extend %center-container;
+  .col-3 {
+    width: 90%;
+    float: left;
+    position: relative;
+    @include styling_wrapper_content($white, center, 18px, $font-family--primary);
+
+    h3 {
+      font-weight: 300;
+    }
+
+    h4 {
+      font-weight: 400;
+    }
+  }
+
+  .col-2 {
+    width: 100%;
+    float: left;
+    position: relative;
+    &.email {
+      margin-top: 18%;
+      text-align: center;
+    }
+  }
+
+  .contact {
+    h3 {
+      @include styling_wrapper_content($white, left, 18px, $font-family--primary, null, 300);
+    }
+    h2 {
+      @include styling_wrapper_content($white, left, 28px, $font-family--primary, null, 500);
+    }
+    .social {
+      width: 100%;
+      h3 {
+        display: inline;
+        margin-left: 5%;
+      }
+    }
+  }
+
+  .craftsman-picture {
+    width: 150px;
+    height: 150px;
+    @include border-radius(50%);
+  }
+}
+
+.scene {
+  height: 100%;
+  padding: 0;
+}
+
+.team {
+  width: 100%;
+  clear: both;
+  overflow: auto;
+  margin-top: 10%;
+}
+
+/* Cards */
+.form-card {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.card {
+  margin: 1em;
+  text-align: center;
+  width: 95%;
+}
+
+.card-content {
+  h2 {
+    @include styling_wrapper_content($gray, left, 22px, $font-family--primary, null, 500);
+  }
+  p {
+    @include styling_wrapper_content($gray, left, 22px, $font-family--primary, null, 300);
+  }
+}
+
+.card-actions {
+  h2 {
+    @include styling_wrapper_content($gray, center, 18px, $font-family--primary, null, 500);
+    a {
+      color: $gray;
+    }
+  }
+}

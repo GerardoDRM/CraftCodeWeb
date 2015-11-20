@@ -1,0 +1,634 @@
+<!doctype html>
+<html class="no-js" lang="es-MX">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#000">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="PSK">
+    <link rel="icon" sizes="192x192" href="img/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
+    <link rel="apple-touch-icon" href="img/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144) -->
+    <meta name="msapplication-TileImage" content="img/touch/ms-touch-icon-144x144-precomposed.png">
+
+
+    <!--<link rel="stylesheet" href="css/normalize.css">-->
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <!-- will be replaced with elements/elements.vulcanized.html -->
+    <link rel="import" href="elements/elements.html">
+    <!-- endreplace-->
+
+    <style is="custom-style">
+
+
+        :root {
+            --color-one: #4C6A8D;
+            --color-two: #047E8C;
+            --color-three: #F05A41;
+            --color-four: #f0565f;
+            --color-white: white;
+        }
+
+        paper-textarea, paper-input {
+            --paper-input-container-color: white;
+            --paper-input-container-focus-color: white;
+            --paper-input-container-invalid-color: white;
+            --paper-input-container-input-color: white;
+
+        }
+
+        paper-input-container {
+            --paper-input-char-counter: white;
+        }
+
+        paper-button[raised].colorful {
+            background: #fff;
+            color: #f0565f;
+        }
+
+        iron-pages {
+            display: inline;
+        }
+
+        .layout.iron-selected {
+            display: block;
+        }
+
+
+    </style>
+
+</head>
+<body class="fullbleed">
+
+<template is="dom-bind" id="app">
+
+
+    <neon-animated-pages id="pages" selected="[[selected]]">
+        <circles-page attr-for-selected="data-route" selected="[[route]]">
+            <a data-route="about" href="/about">
+                <div class="circle" id="about" on-click="_onCircleClick">
+                    <img src="img/menu/about.svg" id="about-icon" class="menu-icon">
+                </div>
+            </a>
+            <a data-route="about" href="/portfolio">
+                <div class="circle" id="portfolio" on-click="_onCircleClick">
+                    <img src="img/menu/proyectos.svg" id="portfolio-icon" class="menu-icon">
+                </div>
+            </a>
+            <a data-route="about" href="/services">
+                <div class="circle" id="services" on-click="_onCircleClick">
+                </div>
+            </a>
+            <a data-route="about" href="/contact">
+                <div class="circle" id="contact" on-click="_onCircleClick">
+                    <img src="img/menu/contacto.svg" id="contact-icon" class="menu-icon">
+                </div>
+            </a>
+        </circles-page>
+
+        <layout-craft>
+            <div id="menu-routes" class="mini-circle-container" attr-for-selected="data-route" selected="[[route]]">
+                <a data-route="about" href="/about">
+                    <div class="mini-circle" id="about-mini" on-click="_onMiniClick">
+                        <div class="mini-circle-middle"></div>
+                    </div>
+                </a>
+                <a data-route="portfolio" href="/portfolio">
+                    <div class="mini-circle" id="portfolio-mini" on-click="_onMiniClick">
+                        <div class="mini-circle-middle"></div>
+                    </div>
+                </a>
+                <a data-route="services" href="/services">
+                    <div class="mini-circle" id="services-mini" on-click="_onMiniClick">
+                        <div class="mini-circle-middle"></div>
+                    </div>
+                </a>
+                <a data-route="contact" href="/contact">
+                    <div class="mini-circle" id="contact-mini" on-click="_onMiniClick">
+                        <div class="mini-circle-middle"></div>
+                    </div>
+                </a>
+            </div>
+            <iron-pages attr-for-selected="data-route" selected="{{route}}">
+
+                <div data-route="about" id="header_about" class="layout">
+                    <div class="header">
+                        <h1>Craft Code</h1>
+                    </div>
+                    <div class="container-craft">
+
+                        <ul id="scene" class="scene">
+                            <li class="layer" data-depth="0.80"><h2 class="quote">El desarrollo de software tambien
+                                puede ser algo artesanal.</h2></li>
+                        </ul>
+                        <div class="grid mv-about">
+                            <div class="col-2">
+                                <h2>Mision</h2>
+
+                                <p>Craft Code surge con el proposito de generar experiencias unicas en las personas, a
+                                    travez
+                                    del
+                                    uso de la tecnologia, desarrollando desde pequenas hasta grandes ideas cumpliendo
+                                    con las
+                                    mejores
+                                    practicas y obteniendo la mejor calidad posible que se encuentra disponible en el mercado.
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <h2>Vision</h2>
+
+                                <p>La vision de Craft Code es proveer experiencias a las personas a travez de una
+                                    interaccion
+                                    facil, sencilla
+                                    y de calidad con el uso de software. Apoyando primordialmente a todos aquellos
+                                    emprendedores y empresas en desarrollo de Mexico y del mundo.</p>
+                            </div>
+                        </div>
+                        <div class="team">
+                            <h2>Craft-Founders</h2>
+
+                            <div class="grid">
+
+                                <div class="col-3">
+                                    <img src="http://www.sellcell.com/blog/wp-content/uploads/2014/03/dog-apps.jpg"
+                                         class="craftsman-picture"/>
+
+                                    <h3>Gerardo de la Rosa</h3>
+                                    <h4>Master Craftsman Coder</h4>
+                                </div>
+                                <div class="col-3">
+                                    <img src="http://www.sellcell.com/blog/wp-content/uploads/2014/03/dog-apps.jpg"
+                                         class="craftsman-picture"/>
+
+                                    <h3>Mario Flores</h3>
+                                    <h4>Master Craftsman UI/UX Designer</h4>
+                                </div>
+                                <div class="col-3">
+                                    <img src="http://www.sellcell.com/blog/wp-content/uploads/2014/03/dog-apps.jpg"
+                                         class="craftsman-picture"/>
+
+                                    <h3>Pablo de la Rosa</h3>
+                                    <h4>Master Craftsman Coder</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div data-route="portfolio" id="header_portfolio" class="layout">
+                    <div class="header">
+                        <h1>Portafolio</h1>
+                    </div>
+                    <div class="container-craft-fluid">
+                        <div class="grid">
+                            <ul id="sceneCards" class="scene" data-friction-x="0.1"
+                                data-friction-y="0.1"
+                                data-scalar-x="10"
+                                data-scalar-y="10">
+                                <div class="col-2">
+                                    <li class="layer" data-depth="1.00">
+                                        <paper-card class="card"
+                                                    image="img/portfolio/beer_vault.png">
+                                            <div class="card-content">
+                                                <h2>The beer vault!</h2>
+
+                                                <p>Proximamente un nuevo concepto que revolucionara la
+                                                    cultura de la cerveza artesanal.</p>
+                                            </div>
+                                        </paper-card>
+                                        <paper-card class="card"
+                                                    image="img/portfolio/next_players.png">
+                                            <div class="card-content">
+                                                <h2>Next Players!</h2>
+
+                                                <p>Nuestro desarrollo con Next Playes fue en la elaboracion de
+                                                    la
+                                                    plataforma
+                                                    web.</p>
+
+                                                <p>Next Players es una plataforma de reclutamiento virtual, para
+                                                    cualquier tipo
+                                                    de deporte, su enfoque esta orientado en ser la conexión
+                                                    entre los
+                                                    atletas y
+                                                    los
+                                                    reclutadores,
+                                                    especialmente en las universidades.</p>
+                                            </div>
+                                            <div class="card-actions">
+                                                <paper-button><h2><a href="http://www.nextplayers.mx"
+                                                                     target="_blank">Explora</a>
+                                                </h2>
+                                                </paper-button>
+                                            </div>
+                                        </paper-card>
+                                        <paper-card class="card"
+                                                    image="img/portfolio/cholulisima.png">
+                                            <div class="card-content">
+                                                <h2>Cholulisima.com!</h2>
+
+                                                <p>El desarrollo realizado para Cholulisima.com consto tanto
+                                                    de
+                                                    su
+                                                    portal web
+                                                    como
+                                                    de su propio
+                                                    administrador de contenido.</p>
+
+                                                <p>Cholulisima.com, es un portal web, que tienen como fin la
+                                                    promocion
+                                                    de lo que
+                                                    la
+                                                    region de Cholula
+                                                    produce.</p>
+                                            </div>
+                                            <div class="card-actions">
+                                                <paper-button><h2><a href="http://www.cholulisima.com"
+                                                                     target="_blank">Explora</a>
+                                                </h2></paper-button>
+                                            </div>
+                                        </paper-card>
+                                    </li>
+                                </div>
+                                <div class="col-2">
+                                    <li class="layer" data-depth="0.60">
+                                        <paper-card class="card"
+                                                    image="img/portfolio/traviare.png">
+                                            <div class="card-content">
+                                                <h2>Traviare!</h2>
+
+                                                <p>La participacion que se tuvo con el equipo de Traviare fue en el
+                                                    desarrollo e
+                                                    implementacion de
+                                                    su pagina web, al igual que en su desarrollo de sistema de
+                                                    booking.</p>
+
+                                                <p>Traviare promueve un concepto unico en cuanto al giro de las agencias
+                                                    de
+                                                    viaje
+                                                    online,
+                                                    ya que su enfoque esta orientado a la promocion de los Pueblos
+                                                    Magicos de
+                                                    Mexico.</p>
+                                            </div>
+
+                                            <div class="card-actions">
+                                                <paper-button><h2><a href="http://www.traviare.com" target="_blank">Explora</a>
+                                                </h2>
+                                                </paper-button>
+                                            </div>
+                                        </paper-card>
+                                        <paper-card class="card"
+                                                    image="img/portfolio/bondzu.png">
+                                            <div class="card-content">
+                                                <h2>Bondzu!</h2>
+
+                                                <p>Craft Code colaboro con Bondzu para el desarrollo de su aplicacion
+                                                    movil en
+                                                    Android,
+                                                    al igual que en su pagina web.</p>
+
+                                                <p>Descarga la app busca nuestro Estern egg, escribiendo craft code y
+                                                    obten un
+                                                    descuento
+                                                    en tu proximo proyecto.</p>
+                                            </div>
+
+                                            <div class="card-actions">
+                                                <paper-button><h2><a
+                                                        href="https://play.google.com/store/apps/details?id=com.bondzu.bondzuapp"
+                                                        target="_blank">Explora</a>
+                                                </h2>
+                                                </paper-button>
+                                            </div>
+                                        </paper-card>
+                                        <paper-card class="card"
+                                                    image="img/portfolio/ecoproject.png">
+                                            <div class="card-content">
+                                                <h2>EcoProject!</h2>
+
+                                                <p>El desarrollo de EcoProject consto basicamente en el desarrollo de su
+                                                    sito
+                                                    web</p>
+
+                                                <p>EcoProject es una empresa orientada a la venta de articulos que
+                                                    utilizan las
+                                                    energias renovables.</p>
+                                            </div>
+                                            <div class="card-actions">
+                                                <paper-button><h2><a href="http://www.ecoproject.com.mx"
+                                                                     target="_blank">Explora</a>
+                                                </h2>
+                                                </paper-button>
+                                            </div>
+                                        </paper-card>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div data-route="services" id="header_services" class="layout"></div>
+                <div data-route="contact" id="header_contact" class="layout">
+                    <div class="header">
+                        <h1>Contacto</h1>
+                    </div>
+                    <div class="container-craft">
+                        <div class="grid">
+                            <div class="col-2 contact">
+                                <h3>Calle xxxxxxxxxx</h3>
+
+                                <h3>hola@craftcode.rocks</h3>
+
+
+                            </div>
+                            <div class="col-2 contact">
+                                <div class="social">
+                                    <img src="img/social/facebook.png" alt="Craft Code"/>
+
+                                    <h3>Craft Code</h3>
+                                </div>
+                                <div class="social">
+                                    <img src="img/social/twitter.png" alt="Craft Code"/>
+
+                                    <h3>@Craft Code</h3>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-2 contact">
+                                <h2>Dejanos escuchar tu proximo proyecto</h2>
+
+                                <div class="form-card">
+                                    <form is="iron-form" id="formPost" method="post" action="/">
+
+                                        <paper-input label="Nombre" char-counter auto-validate pattern="[a-zA-Z]*"
+                                                     error-message="Solo letras" required></paper-input>
+
+                                        <paper-input label="Asunto" char-counter auto-validate pattern="[a-zA-Z]*"
+                                                     maxlength="20" error-message="Solo letras!" required></paper-input>
+
+                                        <paper-textarea label="Comentario" char-counter maxlength="200" rows="3"
+                                                        max-rows="4" required></paper-textarea>
+
+                                        <paper-button raised
+                                                      class="colorful" onclick="submitHandler(event)">Enviar
+                                        </paper-button>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-2 email">
+                                <ul id="sceneEmail" class="scene">
+                                    <li class="layer" data-depth="1.00"><img src="img/menu/contacto.svg" width="90%"
+                                                                             alt="Craft Code Contacto"/></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </iron-pages>
+
+        </layout-craft>
+
+    </neon-animated-pages>
+
+</template>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/jquery.parallax.min.js"></script>
+<script>
+
+
+    // Grab a reference to our auto-binding template
+    // and give it some initial binding values
+    // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
+    var app = document.querySelector('#app');
+
+    app.selected = 0;
+    var color;
+
+    app.displayInstalledToast = function () {
+        // Check to make sure caching is actually enabled—it won't be in the dev environment.
+        if (!document.querySelector('platinum-sw-cache').disabled) {
+            document.querySelector('#caching-complete').show();
+        }
+    };
+
+    // Listen for template bound event to know when bindings
+    // have resolved and content has been stamped to the page
+    app.addEventListener('dom-change', function () {
+        console.log('Our app is ready to rock!');
+    });
+
+    // See https://github.com/Polymer/polymer/issues/1381
+    window.addEventListener('WebComponentsReady', function () {
+        $("#scene").parallax();
+        $("#sceneCards").parallax();
+        $("#cardsLeft").parallax();
+        $("#sceneEmail").parallax();
+
+        // imports are loaded and elements have been registered
+        if (document.querySelector('#menu-routes').selected !== "home") {
+            app.selected = 1;
+            // Hide floating menu
+            var nodes = document.querySelector('circles-page');
+            if (nodes) {
+                if (nodes.opened) {
+                    nodes.hide();
+                }
+            }
+
+        }
+    });
+
+    function submitHandler(event) {
+//      Polymer.dom(event).localTarget.parentElement.submit();
+    }
+
+    app._onCircleClick = function (event) {
+        // Hide floating menu
+        var nodes = document.querySelector('circles-page');
+        if (nodes) {
+            if (nodes.opened) {
+                nodes.hide();
+            }
+        }
+
+        // Get Id
+        var id = event.target.id;
+        var nodes_header = document.querySelector('layout-craft');
+        var node_header;
+
+        if (new RegExp("about").test(id)) {
+            color = "#047E8C";
+            node_header = document.querySelector('#header_about');
+        }
+        else if (new RegExp("portfolio").test(id)) {
+            color = "#4C6A8D";
+            node_header = document.querySelector('#header_portfolio');
+        }
+        else if (new RegExp("services").test(id)) {
+            color = "#F05A41";
+            node_header = document.querySelector('#header_services');
+        }
+        else if (new RegExp("contact").test(id)) {
+            color = "#f0565f";
+            node_header = document.querySelector('#header_contact');
+        }
+        nodes_header.show(node_header);
+        app.selected = 1;
+
+
+    };
+
+    app._onMiniClick = function (event) {
+        // Get Id
+        var id = event.target.id;
+        var nodes_header = document.querySelector('layout-craft');
+        var node_header;
+
+        // Remove selected class
+        var nodes_circles = document.querySelectorAll(".mini-circle");
+        for (var node, index = 0; node = nodes_circles[index]; index++) {
+            node.classList.remove('menu-selected');
+        }
+        // Add selected class to unique index
+        event.target.classList.add('menu-selected');
+        // Remove color from mini circles pointer
+        var nodes_middle = document.querySelectorAll(".mini-circle-middle");
+        for (var node, index = 0; node = nodes_middle[index]; index++) {
+            node.style.backgroundColor = "#FFF";
+            node.style.display = 'none';
+        }
+        // Check which layout should be displayed
+        if (new RegExp("about").test(id)) {
+            color = "#047E8C";
+            node_header = document.querySelector('#header_about');
+        }
+        else if (new RegExp("portfolio").test(id)) {
+            color = "#4C6A8D";
+            node_header = document.querySelector('#header_portfolio');
+        }
+        else if (new RegExp("services").test(id)) {
+            color = "#F05A41";
+            node_header = document.querySelector('#header_services');
+        }
+        else if (new RegExp("contact").test(id)) {
+            color = "#f0565f";
+            node_header = document.querySelector('#header_contact');
+        }
+        // Get child and add color to mini circle middle
+        var child = Polymer.dom(event.target).firstElementChild;
+        child.style.background = color;
+        child.style.display = 'block';
+        // Change layout
+        nodes_header.changeLayout(node_header);
+        // Change neon page
+        app.selected = 1;
+    };
+
+    addEventListener('WebComponentsReady', function () {
+        Polymer({
+            is: 'layout-craft',
+            behaviors: [
+                Polymer.NeonAnimationRunnerBehavior
+            ],
+            properties: {
+                animationConfig: {
+                    value: function () {
+                        var layout = Polymer.dom(this).querySelectorAll('.layout');
+                        var layoutArray = Array.prototype.slice.call(layout);
+                        return {
+                            'entry': [{
+                                name: 'cascaded-animation',
+                                animation: 'scale-up-animation',
+                                nodes: layoutArray
+                            }],
+                            'exit': [{
+                                name: 'cascaded-animation',
+                                animation: 'scale-down-animation',
+                                nodes: layoutArray
+                            }]
+                        };
+                    }
+                }
+            },
+            show: function (layout) {
+                var nodesToScale = [];
+                var layouts = Polymer.dom(this.root).querySelectorAll('.layout');
+                for (var node, index = 0; node = layouts[index]; index++) {
+                    if (node === layout) {
+                        node.style.display = '';
+                        nodesToScale.push(node);
+                    }
+                    else {
+                        node.style.display = 'none';
+                    }
+                }
+                this.animationConfig['entry'][0].nodes = nodesToScale;
+                this.style.display = 'block';
+                this.style.backgroundColor = color;
+
+            },
+            changeLayout: function (layout) {
+                var nodesToScale = [];
+                var layouts = Polymer.dom(this.root).querySelectorAll('.layout');
+                for (var node, index = 0; node = layouts[index]; index++) {
+                    if (node === layout) {
+                        node.style.display = '';
+                        nodesToScale.push(node);
+                    }
+                    else {
+                        node.style.display = 'none';
+                    }
+                }
+                this.animationConfig['entry'][0].nodes = nodesToScale;
+                this.animationConfig['entry'][0].animation = "slide-from-left-animation";
+                this.style.display = 'block';
+                this.style.backgroundColor = color;
+                this.playAnimation('entry');
+            }
+        });
+    });
+
+
+</script>
+
+</body>
+</html>
